@@ -27,7 +27,7 @@ interface MediaGridConfig {
 
 #### Supported Media
 
-> NOTE: Media format is completed derived from the file extension and NOT file metadata. So it is possible to trick obsidian into attempting to render an invalid file just be renaming the extension.
+> NOTE: Media format is completed derived from the file extension and NOT file metadata. So it is possible to trick obsidian into attempting to render an invalid file just by renaming the extension.
 
 ```ts
 const imageExtensions = ['jpg', 'jpeg', 'png', 'webp'];
@@ -46,7 +46,7 @@ grid-container-id: my-grid
 
 ![[image-1.jpg]]
 ![[some-random_image.png]]
-![[video-doesnt-work-yet.mp4]]
+![[video-here.mp4]]
 ```
 
 You should now see all your images in a grid. Also, the grid container will have the id `#my-grid` which can be used to further customize the styles using css snippets.
@@ -58,3 +58,9 @@ You should now see all your images in a grid. Also, the grid container will have
 - [x] Image rendering
 - [ ] Media size
 - [x] Video rendering
+
+***
+
+Refer [these](./DEV_TESTING.md) instructions to try it out locally
+
+##### Feel free to contribute

@@ -1,0 +1,49 @@
+import { type MediaGridConfig, createDefaultConfig } from "../../config/plugin-config.js";
+import { Logger } from "../../logger.js";
+import { checkForMedia } from "./media.js";
+import { checkForColumns, checkForGap, checkForGridContainerId } from "./metadata.js";
+
+const logger = Logger.getInstance();
+
+export function parseSource(source: string) {
+    const lines = source.split('\n');
+    const config: MediaGridConfig = createDefaultConfig();
+
+    for (let line of lines) {
+        if (!line) {
+            // empty line
+            continue;
+        }
+        // logger.log("parsing line:", line);
+        const mediaDetectionResult = checkForMedia(line);
+        if (mediaDetectionResult) {
+            // logger.log("\tMedia found");
+            config.files.push(mediaDetectionResult);
+            continue;
+        }
+
+        const colDetectionResult = checkForColumns(line);
+        if (colDetectionResult) {
+            // logger.log("\tColumns found");
+            // logger.log(colDetectionResult);
+            config.cols = colDetectionResult;
+            continue;
+        }
+
+        const gapDetectionResult = checkForGap(line);
+        if (gapDetectionResult) {
+            config.gap = gapDetectionResult;
+            continue;
+        }
+
+        const gridContainerIdDetectionResult = checkForGridContainerId(line);
+        if (gridContainerIdDetectionResult) {
+            config.gridContainerId = gridContainerIdDetectionResult;
+            continue;
+        }
+
+        logger.warn(`Invalid Syntax. Could not parse "${line}"`);
+    }
+
+    return config;
+}

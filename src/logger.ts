@@ -14,4 +14,8 @@ export class Logger {
     public log(...args: unknown[]) {
         console.log("[MediaGridPlugin::info]", ...args)
     }
+
+    public warn(...args: unknown[]) {
+        console.warn("[MediaGridPlugin:warn]", ...args)
+    }
 }

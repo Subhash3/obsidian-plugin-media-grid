@@ -2,6 +2,7 @@ import type { App, MarkdownPostProcessorContext } from "obsidian";
 import { parseSource } from "./parser/parse-source.js";
 import { Logger } from "../utils/logger.js";
 import { createCallout } from "../utils/create-callout.js";
+import { createMediaElement } from "../utils/create-media.js";
 
 const logger = Logger.getInstance();
 
@@ -13,8 +14,10 @@ export function getMediaGridProcessor(app: App) {
 
         if (syntaxErrors.length > 0) {
             const warningsDiv = container.createDiv({ cls: 'media-grid-syntax-errors' })
+
             const error = syntaxErrors.join("<br />");
-            createCallout(warningsDiv, "media-grid syntax error", error, 'warning');
+            const callOut = createCallout("media-grid syntax error", error, 'warning');
+            warningsDiv.append(callOut);
         }
 
         const grid = container.createDiv({ cls: 'media-grid-container' });
@@ -24,12 +27,11 @@ export function getMediaGridProcessor(app: App) {
         grid.style.gap = `${config.gap}px`;
 
         for (let file of config.files) {
-            const gridCell = grid.createDiv({ cls: 'media-grid-cell' });
-            const img = document.createElement('img');
-            img.src = getResourceLinkFromFileName(app, file.filename);
-            img.alt = file.filename;
+            const resourceLink = getResourceLinkFromFileName(app, file.filename);
 
-            gridCell.append(img);
+            const gridCell = grid.createDiv({ cls: 'media-grid-cell' });
+            const mediaEl = createMediaElement(resourceLink, file);
+            gridCell.append(mediaEl);
             grid.append(gridCell);
         }
     }

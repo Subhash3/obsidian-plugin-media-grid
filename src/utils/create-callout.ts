@@ -1,5 +1,6 @@
-export function createCallout(root: HTMLElement, title: string, content: string, variant = 'info') {
-    const calloutDiv = root.createEl('div', { cls: 'callout' });
+export function createCallout(title: string, content: string, variant = 'info') {
+    const calloutDiv = document.createElement('div');
+    calloutDiv.classList.add('callout');
     calloutDiv.setAttribute('data-callout', variant);
 
     const titleDiv = calloutDiv.createEl('div', { cls: 'callout-title' });

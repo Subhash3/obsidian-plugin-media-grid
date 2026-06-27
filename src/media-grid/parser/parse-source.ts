@@ -17,7 +17,11 @@ export function parseSource(source: string): { config: MediaGridConfig, syntaxEr
         }
         const mediaDetectionResult = checkForMedia(line);
         if (mediaDetectionResult) {
-            config.files.push(mediaDetectionResult);
+            config.files.push({
+                filename: mediaDetectionResult.filename,
+                mediaType: mediaDetectionResult.type,
+                size: mediaDetectionResult.size
+            });
             continue;
         }
 

@@ -1,8 +1,16 @@
+import type { MediaType } from "../types.js";
+
+export interface MediaFile {
+    filename: string;
+    mediaType: MediaType;
+    size: number;
+}
+
 export interface MediaGridConfig {
     cols: number;
     gap: number;
     gridContainerId: string;
-    files: Array<{ filename: string, size: number }>
+    files: Array<MediaFile>
 }
 
 export const DEFAULT_CONFIG: MediaGridConfig = {

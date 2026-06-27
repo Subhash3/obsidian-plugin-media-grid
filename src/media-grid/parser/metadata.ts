@@ -6,7 +6,6 @@ const logger = Logger.getInstance()
 
 export function checkForColumns(line: string): number | null {
     const match = regex.cols.exec(line);
-    // logger.log(match)
 
     if (!match) {
         return null;
@@ -22,7 +21,6 @@ export function checkForColumns(line: string): number | null {
 
 export function checkForGap(line: string): number | null {
     const match = regex.gap.exec(line);
-    // logger.log(match)
 
     if (!match) {
         return null;
@@ -37,9 +35,7 @@ export function checkForGap(line: string): number | null {
 }
 
 export function checkForGridContainerId(line: string): string | null {
-    logger.log("checkForGridContainerId");
     const match = regex.gridContainerId.exec(line);
-    console.log(match);
 
     if(!match) {
         return null;

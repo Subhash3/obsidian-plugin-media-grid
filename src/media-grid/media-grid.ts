@@ -10,7 +10,7 @@ export class MediaGridPlugin extends Plugin {
     }
 
     onload(): Promise<void> | void {
-        logger.log("Onload");
+        logger.info("Onload");
 
         this.registerMarkdownCodeBlockProcessor('media-grid', getMediaGridProcessor(this.app), 0)
     }

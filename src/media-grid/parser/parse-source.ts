@@ -15,18 +15,14 @@ export function parseSource(source: string): { config: MediaGridConfig, syntaxEr
             // empty line
             continue;
         }
-        // logger.log("parsing line:", line);
         const mediaDetectionResult = checkForMedia(line);
         if (mediaDetectionResult) {
-            // logger.log("\tMedia found");
             config.files.push(mediaDetectionResult);
             continue;
         }
 
         const colDetectionResult = checkForColumns(line);
         if (colDetectionResult) {
-            // logger.log("\tColumns found");
-            // logger.log(colDetectionResult);
             config.cols = colDetectionResult;
             continue;
         }

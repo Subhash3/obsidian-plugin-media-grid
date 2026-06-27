@@ -11,7 +11,7 @@ export class Logger {
         return Logger.instance;
     }
 
-    public log(...args: unknown[]) {
+    public info(...args: unknown[]) {
         console.log("[MediaGridPlugin::info]", ...args)
     }
 

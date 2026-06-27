@@ -16,11 +16,33 @@ Trying to learn obsidian plugin development
 ```
 #### Config
 
-- I'm kind of confused about this one. Easiest one would be accept no. of columns and create a fixed grid.
-- But, I may want some of those pictures to be a little larger/smaller
-- So, may be accept no. of rows and no. of columns per row?? This controls the width. But what about height? (Ughh I'm overthinking it. I'll just stick to colums for now and enhance it later if I have time)
-- So, final config (for now):
 ```ts
+interface MediaGridConfig {
     cols: number;
-    gap?: number;
+    gap: number;
+    gridContainerId: string;
+    files: Array<{ filename: string, size: number }>
+}
 ```
+
+#### Example
+
+```media-grid
+cols: 4
+gap: 4
+grid-container-id: my-grid
+
+![[image-1.jpg]]
+![[some-random_image.png]]
+![[video-doesnt-work-yet.mp4]]
+```
+
+You should now see all your images in a grid. Also, the grid container will have the id `#my-grid` which can be used to further customize the styles using css snippets.
+
+#### Todo
+
+- [x] Basic grid
+    - [x] `cols`, `gap` and `gridContainerId`
+- [x] Image rendering
+- [ ] Media size
+- [ ] Video rendering

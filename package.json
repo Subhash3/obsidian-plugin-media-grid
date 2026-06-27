@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node esbuild.config.mjs",
+    "build:prod": "tsc && node esbuild.config.mjs production",
+    "clean": "rm -rf dist/ build/"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +20,10 @@
     }
   },
   "type": "module",
-  "dependencies": {
+  "devDependencies": {
+    "@es-exec/esbuild-plugin-start": "^0.0.5",
+    "esbuild": "^0.28.1",
+    "dotenv": "^17.4.2",
     "obsidian": "^1.13.1",
     "typescript": "^6.0.3"
   }

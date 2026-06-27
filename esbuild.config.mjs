@@ -1,7 +1,6 @@
 import esbuild from 'esbuild';
 import process from 'process';
 import { builtinModules } from 'node:module';
-import start from '@es-exec/esbuild-plugin-start';
 import { configDotenv } from 'dotenv'
 
 const banner = `/*
@@ -41,12 +40,7 @@ const context = await esbuild.context({
     sourcemap: prod ? false : 'inline',
     treeShaking: true,
     outfile: 'build/main.js',
-    minify: prod,
-    plugins: [
-        start({
-            script: `cp -r build/main.js manifest.json ${process.env.PLUGIN_FOLDER}`
-        })
-    ]
+    minify: prod
 });
 
 if (prod) {

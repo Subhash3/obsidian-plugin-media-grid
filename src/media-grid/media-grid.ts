@@ -14,4 +14,8 @@ export class MediaGridPlugin extends Plugin {
 
         this.registerMarkdownCodeBlockProcessor('media-grid', getMediaGridProcessor(this.app), 0)
     }
+
+    onunload(): void {
+        logger.info("OnUnload");
+    }
 }

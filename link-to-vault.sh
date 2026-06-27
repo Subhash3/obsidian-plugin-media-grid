@@ -24,6 +24,21 @@ then
     mkdir -p "$plugins_dir"
 fi
 
+if [ -L "$plugin_dir" ]
+then
+    echo "Warning: $plugin_dir is already a symlink"
+    echo "Removing $plugin_dir"
+    rm "$plugin_dir"
+elif [ -d "$plugin_dir" ]
+then
+    echo "Warning: $plugin_dir is already a directory"
+    echo "Removing $plugin_dir"
+    rm -rf "$plugin_dir"
+fi
+
+echo "Copying manifest.json to $plugin_build_dir"
+cp manifest.json "$plugin_build_dir"
+
 echo "Linking $plugin_build_dir to $plugin_dir"
 ln -s "$plugin_build_dir" "$plugin_dir"
 

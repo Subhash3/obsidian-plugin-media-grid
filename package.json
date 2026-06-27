@@ -21,7 +21,6 @@
   },
   "type": "module",
   "devDependencies": {
-    "@es-exec/esbuild-plugin-start": "^0.0.5",
     "esbuild": "^0.28.1",
     "dotenv": "^17.4.2",
     "obsidian": "^1.13.1",

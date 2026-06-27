@@ -1,6 +1,6 @@
 import { DEFAULT_CONFIG } from "../../config/plugin-config.js";
 import { regex } from "../../config/regex.js";
-import { Logger } from "../../logger.js";
+import { Logger } from "../../utils/logger.js";
 
 const logger = Logger.getInstance()
 

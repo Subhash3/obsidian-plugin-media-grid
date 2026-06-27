@@ -1,5 +1,5 @@
 import { App, Plugin, type PluginManifest } from 'obsidian'
-import { Logger } from '../logger.js';
+import { Logger } from '../utils/logger.js';
 import { getMediaGridProcessor } from './media-grid-processor.js';
 
 const logger = Logger.getInstance();

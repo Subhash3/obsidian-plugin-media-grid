@@ -1,8 +1,5 @@
 import { DEFAULT_CONFIG } from "../../config/plugin-config.js";
 import { regex } from "../../config/regex.js";
-import { Logger } from "../../utils/logger.js";
-
-const logger = Logger.getInstance()
 
 export function checkForColumns(line: string): number | null {
     const match = regex.cols.exec(line);
@@ -16,7 +13,8 @@ export function checkForColumns(line: string): number | null {
         return DEFAULT_CONFIG.cols;
     }
 
-    return Number(columns) ?? DEFAULT_CONFIG.cols;
+    const columns_n = Number(columns);
+    return columns_n ?? DEFAULT_CONFIG.cols;
 }
 
 export function checkForGap(line: string): number | null {
@@ -31,19 +29,20 @@ export function checkForGap(line: string): number | null {
         return DEFAULT_CONFIG.gap;
     }
 
-    return Number(gap) ?? DEFAULT_CONFIG.gap;
+    const gap_n = Number(gap);
+    return gap_n ?? DEFAULT_CONFIG.gap;
 }
 
 export function checkForGridContainerId(line: string): string | null {
     const match = regex.gridContainerId.exec(line);
 
-    if(!match) {
+    if (!match) {
         return null;
     }
 
     const id = match[1];
 
-    if(!id) {
+    if (!id) {
         return '';
     }
 

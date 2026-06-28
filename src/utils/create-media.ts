@@ -13,7 +13,7 @@ export function createMediaElement(resourceLink: string, file: MediaFile) {
 }
 
 function createImg(resourceLink: string, file: MediaFile): HTMLImageElement {
-    const img = document.createElement('img');
+    const img = activeDocument.createElement('img');
     img.src = resourceLink
     img.alt = file.filename;
     img.width = file.size;
@@ -22,7 +22,7 @@ function createImg(resourceLink: string, file: MediaFile): HTMLImageElement {
 }
 
 function createVideo(resourseLink: string, file: MediaFile): HTMLVideoElement {
-    const video = document.createElement('video');
+    const video = activeDocument.createElement('video');
     video.controls = true;
     video.src = resourseLink;
     video.width = file.size;

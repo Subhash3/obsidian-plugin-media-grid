@@ -1,13 +1,19 @@
 {
   "name": "obsidian-plugin-media-grid",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node esbuild.config.mjs",
-    "build:prod": "tsc && node esbuild.config.mjs production",
-    "clean": "rm -rf dist/ build/"
+    "sass:dev": "sass src/styles.scss build/styles.css -w",
+    "esbuild:dev": "node esbuild.config.mjs",
+    "dev": "concurrently \"pnpm run esbuild:dev\" \"pnpm run sass:dev\"",
+    "esbuild:prod": "node esbuild.config.mjs production",
+    "sass:prod": "sass src/styles.scss build/styles.css --no-source-map",
+    "build:prod": "tsc && pnpm run esbuild:prod && pnpm run sass:prod",
+    "clean": "rm -rf dist/ build/",
+    "lint": "eslint .",
+    "version:bump": "bash version-bump.sh"
   },
   "keywords": [],
   "author": "",
@@ -21,9 +27,16 @@
   },
   "type": "module",
   "devDependencies": {
-    "esbuild": "^0.28.1",
     "dotenv": "^17.4.2",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.6.0",
+    "eslint-plugin-obsidianmd": "^0.3.0",
+    "globals": "^17.7.0",
+    "jiti": "^2.7.0",
     "obsidian": "^1.13.1",
-    "typescript": "^6.0.3"
+    "sass": "^1.101.0",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.62.0",
+    "concurrently": "^10.0.3"
   }
 }

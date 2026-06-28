@@ -1,5 +1,5 @@
 export function createCallout(title: string, content: string, variant = 'info') {
-    const calloutDiv = document.createElement('div');
+    const calloutDiv = activeDocument.createElement('div');
     calloutDiv.classList.add('callout');
     calloutDiv.setAttribute('data-callout', variant);
 
@@ -16,9 +16,10 @@ export function createCallout(title: string, content: string, variant = 'info') 
         cls: 'callout-content',
     });
 
-    contentDiv.style.paddingLeft = '16px';
+    const pre = contentDiv.createEl('pre');
+    pre.textContent = content;
 
-    contentDiv.innerHTML = content;
+    contentDiv.replaceChildren(pre);
 
     calloutDiv.append(contentDiv);
 

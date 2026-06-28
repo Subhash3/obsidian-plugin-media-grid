@@ -63,6 +63,10 @@ You should now see all your images in a grid. Also, the grid container will have
 - Keep each config property and media file in its own separate line
 - If a grid row contains images of different height, the row's height will be set to that of the image with maximum height leaving any unwanted space around smaller images. Autoscaling images was intentionally left out so as to not strech/shrink images. If per image customization is required, you may still use the `grid-container-id` and customize with css.
 
+#### Installation Instructions
+
+Refer [these](./DEV_TESTING.md) instructions to try it out locally
+
 #### Todo
 
 - [x] Basic grid
@@ -73,8 +77,6 @@ You should now see all your images in a grid. Also, the grid container will have
 - [ ] `column gap` and `row gap`
 
 ***
-
-Refer [these](./DEV_TESTING.md) instructions to try it out locally
 
 [^1] Css grid does support different gaps for rows and columns. But, as of now, this plugin doesn't support that. The same gap will be used for both rows and columns.
 [^2] Grid container id can be used to further customize the grid behaviour using css snippets.

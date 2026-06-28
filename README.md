@@ -68,7 +68,7 @@ You should now see all your images in a grid. Also, the grid container will have
 - [x] Basic grid
     - [x] `cols`, `gap` and `gridContainerId`
 - [x] Image rendering
-- [ ] Media size
+- [x] Media size
 - [x] Video rendering
 
 ***

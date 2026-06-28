@@ -12,7 +12,7 @@ export function getMediaGridProcessor(app: App) {
         if (syntaxErrors.length > 0) {
             const warningsDiv = container.createDiv({ cls: 'media-grid-syntax-errors' })
 
-            const error = syntaxErrors.join("<br />");
+            const error = syntaxErrors.join("\n");
             const callOut = createCallout("media-grid syntax error", error, 'warning');
             warningsDiv.append(callOut);
         }

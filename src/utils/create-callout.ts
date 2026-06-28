@@ -16,7 +16,10 @@ export function createCallout(title: string, content: string, variant = 'info') 
         cls: 'callout-content',
     });
 
-    contentDiv.replaceChildren(content);
+    const pre = contentDiv.createEl('pre');
+    pre.textContent = content;
+
+    contentDiv.replaceChildren(pre);
 
     calloutDiv.append(contentDiv);
 

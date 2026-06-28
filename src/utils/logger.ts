@@ -12,10 +12,10 @@ export class Logger {
     }
 
     public info(...args: unknown[]) {
-        console.log("[MediaGridPlugin::info]", ...args)
+        // console.log("[MediaGridPlugin::info]", ...args)
     }
 
     public warn(...args: unknown[]) {
-        console.warn("[MediaGridPlugin:warn]", ...args)
+        // console.warn("[MediaGridPlugin:warn]", ...args)
     }
 }

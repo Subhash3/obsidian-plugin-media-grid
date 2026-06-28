@@ -16,6 +16,8 @@ export function createCallout(title: string, content: string, variant = 'info') 
         cls: 'callout-content',
     });
 
+    contentDiv.style.paddingLeft = '16px';
+
     contentDiv.innerHTML = content;
 
     calloutDiv.append(contentDiv);

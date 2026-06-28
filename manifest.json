@@ -2,10 +2,9 @@
 	"id": "media-grid",
 	"name": "Media Grid",
 	"version": "1.0.0",
-	"minAppVersion": "1.0.0",
-	"description": "Wrap media inside a grid layout",
+	"minAppVersion": "1.12.7",
+	"description": "Wrap media inside a grid layout.",
 	"author": "Subhash Sarangi",
 	"authorUrl": "https://subhash3.github.io/",
-	"fundingUrl": "",
 	"isDesktopOnly": true
 }

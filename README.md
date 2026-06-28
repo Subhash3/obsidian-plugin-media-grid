@@ -70,6 +70,7 @@ You should now see all your images in a grid. Also, the grid container will have
 - [x] Image rendering
 - [x] Media size
 - [x] Video rendering
+- [ ] `column gap` and `row gap`
 
 ***
 

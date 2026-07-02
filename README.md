@@ -1,6 +1,6 @@
 ## Media grid
 
-An obsidian plugin to wrap media inside a grid
+An obsidian plugin to wrap media inside a grid or a flexbox layout
 
 <pre>
 ```media-grid
@@ -28,39 +28,56 @@ Anything beyond these file extensions will be treated as unknown format and an e
 
 #### Config
 
-|      Property       |   Type   | Description                                             | Default value | Notes |
-| :-----------------: | :------: | ------------------------------------------------------- | :-----------: | ----- |
-|       `cols`        | `number` | Number of columns to render in the grid                 |      `4`      |       |
-|        `gap`        | `number` | Gap between rows and column                             |      `4`      | ^1    |
-| `grid-container-id` | `string` | An unique id to be assigned the rendered grid container |       -       | ^2    |
+|      Property       |       Type       | Description                                                                                    | Default value | Notes |
+| :-----------------: | :--------------: | ---------------------------------------------------------------------------------------------- | :-----------: | ----- |
+|       `cols`        | `number \| null` | Number of columns to render in the grid. If omitted, the plugin uses a flexbox layout instead. |    `null`     | ^1    |
+|        `gap`        |     `number`     | Gap between rows and column                                                                    |      `4`      | ^2    |
+| `grid-container-id` |     `string`     | An unique id to be assigned the rendered grid container                                        |       -       | ^3    |
 
+#### Grid vs Flex
 
-#### Example
+Use `cols` when you want a strict CSS grid with a fixed number of columns per row. If `cols` is omitted, the plugin falls back to a flexbox layout where each row is defined by a blank line and the media items in that row wrap naturally.
+
+##### Grid example:
 
 <pre>
 ```media-grid
 cols: 3
 gap: 4
-grid-container-id: nice-grid
 
-![[pexels-maitane-arribas-2161656052-38145841.jpg]]
-![[pexels-kaju-style-102944731-12576396.jpg]]
-![[pexels-ammy-singh-294201421-37742011.jpg]]
-![[image-1.jpg]]
-![[16238023_2160_3840_30fps.mp4]]
-![[16156347_1080_1920_60fps.mp4]]
+![[image-1.png]]
+![[image-2.png]]
+![[image-3.png]]
+![[image-4.png]]
+![[video-5.png]]
+![[video-6.png]]
 ```
 </pre>
 
-You should now see all your images in a grid. Also, the grid container will have the id `#nice-grid` which can be used to further customize the styles using css snippets.
+Renders the media files in a grid with 3 columns
 
-![Image](./assets/example-grid.png)
+##### Flex example:
 
-> NOTE: Images used in this project are sourced from [pexels.com](https://www.pexels.com/). They are used in accordance with the applicable license. I do not claim ownership of these images. All rights remain with their respective creators.
+<pre>
+```media-grid
+gap: 4
+
+![[image-1.png]]
+![[image-2.png]]
+
+![[image-3.png]]
+![[image-4.png]]
+```
+</pre>
+
+Renders the media files in a grid with 2 rows (2 groups separated by a blank line)
+
+> I got the flexbox idea from [this](https://github.com/zremboldt/obsidian-media-grid), a simple but extremely powerful css snippet which does almost 90% of what this plugin can do lol. I highly recommend checking it out.
 
 #### Notes
 
 - Keep each config property and media file in its own separate line
+- If `cols` is omitted, the plugin uses a flexbox layout instead of a CSS grid.
 - If a grid row contains images of different height, the row's height will be set to that of the image with maximum height leaving any unwanted space around smaller images. Autoscaling images was intentionally left out so as to not strech/shrink images. If per image customization is required, you may still use the `grid-container-id` and customize with css.
 
 #### Installation Instructions
@@ -72,13 +89,14 @@ Refer [these](./DEV_TESTING.md) instructions to try it out locally
 - [x] Basic grid
     - [x] `cols`, `gap` and `gridContainerId`
 - [x] Image rendering
-- [x] Media size
+- [ ] Media size
 - [x] Video rendering
 - [ ] `column gap` and `row gap`
 
 ***
 
-[^1] Css grid does support different gaps for rows and columns. But, as of now, this plugin doesn't support that. The same gap will be used for both rows and columns.
-[^2] Grid container id can be used to further customize the grid behaviour using css snippets.
+[^1] Use `cols` when you want a strict CSS grid with a fixed number of columns per row. If `cols` is omitted, the plugin falls back to a flexbox layout where each row is defined by a blank line.  
+[^2] Css grid does support different gaps for rows and columns. But, as of now, this plugin doesn't support that. The same gap will be used for both rows and columns.  
+[^3] Grid container id can be used to further customize the grid behaviour using css snippets.  
 
 ##### Feel free to contribute

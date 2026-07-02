@@ -16,7 +16,6 @@ function createImg(resourceLink: string, file: MediaFile): HTMLImageElement {
     const img = activeDocument.createElement('img');
     img.src = resourceLink
     img.alt = file.filename;
-    img.width = file.size;
 
     return img;
 }
@@ -25,7 +24,6 @@ function createVideo(resourseLink: string, file: MediaFile): HTMLVideoElement {
     const video = activeDocument.createElement('video');
     video.controls = true;
     video.src = resourseLink;
-    video.width = file.size;
 
     return video;
 }

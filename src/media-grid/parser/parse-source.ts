@@ -1,23 +1,28 @@
-import { type MediaGridConfig, createDefaultConfig } from "../../config/plugin-config.js";
+import { type MediaFile, type MediaGridConfig, createDefaultConfig } from "../../config/plugin-config.js";
 import { Logger } from "../../utils/logger.js";
 import { checkForMedia } from "./media.js";
 import { checkForColumns, checkForGap, checkForGridContainerId } from "./metadata.js";
 
 const logger = Logger.getInstance();
 
-export function parseSource(source: string): { config: MediaGridConfig, syntaxErrors: string[] } {
+export function parseSource(source: string): { config: MediaGridConfig, syntaxErrors: string[], } {
     const lines = source.split('\n');
     const config: MediaGridConfig = createDefaultConfig();
     const syntaxErrors = [];
 
+    let row: MediaFile[] = [];
+
     for (let line of lines) {
         if (!line) {
-            // empty line
+            if (row.length > 0) {
+                config.rows.push([...row]);
+                row = [];
+            }
             continue;
         }
         const mediaDetectionResult = checkForMedia(line);
         if (mediaDetectionResult) {
-            config.files.push({
+            row.push({
                 filename: mediaDetectionResult.filename,
                 mediaType: mediaDetectionResult.type,
                 size: mediaDetectionResult.size
@@ -45,6 +50,11 @@ export function parseSource(source: string): { config: MediaGridConfig, syntaxEr
 
         logger.warn(`Invalid Syntax. Could not parse "${line}"`);
         syntaxErrors.push(`Could not parse "${line}"`)
+    }
+
+    if (row.length > 0) {
+        config.rows.push([...row]);
+        row = [];
     }
 
     return {

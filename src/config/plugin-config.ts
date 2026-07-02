@@ -7,25 +7,25 @@ export interface MediaFile {
 }
 
 export interface MediaGridConfig {
-    cols: number;
+    cols: number | null;
     gap: number;
     gridContainerId: string;
-    files: Array<MediaFile>
+    rows: MediaFile[][]
 }
 
 export const DEFAULT_CONFIG: MediaGridConfig = {
-    cols: 4,
+    cols: null,
     gap: 4,
     gridContainerId: '',
-    files: []
+    rows: []
 }
 
 export function createDefaultConfig(): MediaGridConfig {
     return {
-        cols: 4,
+        cols: null,
         gap: 4,
         gridContainerId: '',
-        files: []
+        rows: []
     }
 }
 

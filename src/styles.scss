@@ -1,7 +1,27 @@
 .media-grid-container {
-    display: grid;
-
     .callout-content {
         padding-left: 16px;
+    }
+
+    &.flex {
+        display: flex;
+        flex-direction: column;
+
+        .media-grid-row {
+            display: flex;
+
+            .media-grid-cell {
+                flex: 1;
+
+                img,
+                video {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    &.grid {
+        display: grid;
     }
 }

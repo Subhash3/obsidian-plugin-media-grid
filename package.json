@@ -13,7 +13,9 @@
     "build:prod": "tsc && pnpm run esbuild:prod && pnpm run sass:prod",
     "clean": "rm -rf dist/ build/",
     "lint": "eslint .",
-    "version:bump": "bash version-bump.sh"
+    "changeset": "changeset",
+    "changeset:version": "changeset version",
+    "release": "changeset publish"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +29,7 @@
   },
   "type": "module",
   "devDependencies": {
+    "@changesets/cli": "^2.29.0",
     "concurrently": "^10.0.3",
     "esbuild": "^0.28.1",
     "eslint": "^10.6.0",
